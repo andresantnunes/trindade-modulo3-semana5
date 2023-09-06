@@ -5,7 +5,7 @@ services: # criar serviços em container
     ports: # port-foward 3333(máquina) -> 3333(docker)
       - 3333:3333
     environment:
-      - POSTGRES_DB=postgres #banco de dados que eu estou acessando
+      - DB_HOST=db #banco de dados que eu estou acessando
     networks:
       - spring-postgres # rede interna do docker que esse service faz parte
   db:
@@ -20,6 +20,8 @@ services: # criar serviços em container
       #       POSTGRES_PASSWORD: "root"
     expose:
       - 5432
+    ports: # port-foward 3333(máquina) -> 3333(docker)
+      - 5432:5432
 volumes:
   db-data:
 networks:
